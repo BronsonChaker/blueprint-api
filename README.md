@@ -4,6 +4,8 @@ Blueprint Construction Suite.
 
 Project management application used to manage construction sites and builds
 
+Frontend repo: [blueprint-web](https://github.com/bronsonchaker/blueprint-web)
+
 ## Tech Stack
 
 Language/Framework: Python/Django
