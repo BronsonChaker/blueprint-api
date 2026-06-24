@@ -1,6 +1,7 @@
 from django.db import models
 
 class Document(models.Model):
+    """ A file attached to a specific job. Plans, Contract, Permits etc."""
 
     user_id = models.ForeignKey('users.user', on_delete=models.SET_NULL, null=True)
     job_id = models.ForeignKey('jobs.Job', on_delete=models.CASCADE)
