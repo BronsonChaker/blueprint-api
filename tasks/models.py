@@ -6,7 +6,7 @@ class Task(models.Model):
         COMPLETED = 'completed', 'Completed'
 
     job = models.ForeignKey('jobs.Job', on_delete=models.CASCADE)
-    # //TODO Vendor Foreign Key
+    vendor = models.ForeignKey('vendors.Vendor', on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=255)
     booking_date = models.DateField(null=True, blank=True)
     completion_date = models.DateField(null=True, blank=True)
