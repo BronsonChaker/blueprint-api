@@ -16,6 +16,7 @@ class Job(models.Model):
         MAINTENANCE = 'maintenance', 'Maintenance'
 
     organisation = models.ForeignKey('organisations.Organisation', on_delete=models.CASCADE)
+    template = models.ForeignKey('jobs.JobTemplate', on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     status = models.CharField(max_length=20, choices=Status.choices, null=False)
@@ -46,3 +47,7 @@ class JobTemplateItem(models.Model):
 
     def __str__ (self):
         return self.name
+    
+class Room(models.Model):
+    job = models.ForeignKey('jobs.Job', on_delete=models.CASCADE)
+    name = models.CharField(max_length=50)
