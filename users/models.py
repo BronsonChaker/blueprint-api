@@ -15,6 +15,7 @@ class Membership(models.Model):
         ADMIN = 'admin', 'Admin'
         SUPERVISOR = 'supervisor', 'Supervisor'
         INSPECTOR = 'inspector', 'Inspector'
+        GUEST = 'guest', 'Guest'
 
     user = models.ForeignKey('users.User', on_delete=models.CASCADE)
     organisation = models.ForeignKey('organisations.Organisation', on_delete=models.CASCADE)
