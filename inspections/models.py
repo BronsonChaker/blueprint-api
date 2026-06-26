@@ -8,7 +8,7 @@ class Inspection(models.Model):
     job = models.ForeignKey('jobs.Job', on_delete=models.CASCADE)
     task = models.ForeignKey('tasks.Task', on_delete=models.CASCADE)
     inspector = models.ForeignKey('users.User', on_delete=models.SET_NULL, null=True)
-    template = models.ForeignKey('inspections.InspectionTemplate', on_delete=models.SET_NULL, null=True)
+    template = models.ForeignKey('inspections.InspectionTemplate', on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=255)
     inspection_date = models.DateField(null=True, blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
@@ -37,7 +37,7 @@ class InspectionTemplateItem(models.Model):
     
 class Defect(models.Model):
     inspection = models.ForeignKey('inspections.Inspection', on_delete=models.CASCADE)
-    vendor = models.ForeignKey('vendors.Vendor', on_delete=models.SET_NULL, null=True)
+    vendor = models.ForeignKey('vendors.Vendor', on_delete=models.SET_NULL, null=True, blank=True)
     job = models.ForeignKey('jobs.Job', on_delete=models.CASCADE)
     room = models.ForeignKey('jobs.Room', on_delete=models.CASCADE)
     description = models.CharField(max_length=255)

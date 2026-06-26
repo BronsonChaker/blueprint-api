@@ -15,12 +15,16 @@ class Job(models.Model):
         COMPLETION = 'completion', 'Completion'
         MAINTENANCE = 'maintenance', 'Maintenance'
 
+    job_number = models.CharField(max_length=10, null=True)
     organisation = models.ForeignKey('organisations.Organisation', on_delete=models.CASCADE)
-    template = models.ForeignKey('jobs.JobTemplate', on_delete=models.SET_NULL, null=True)
+    template = models.ForeignKey('jobs.JobTemplate', on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     status = models.CharField(max_length=20, choices=Status.choices, null=False)
     stage = models.CharField(max_length=20, choices=Stage.choices, null=False)
+    client_name = models.CharField(max_length=255, blank=True)
+    client_email = models.EmailField(blank=True)
+    client_phone = models.CharField(max_length=20, blank=True)
     contract_start_date = models.DateField(null=True, blank=True)
     contract_end_date = models.DateField(null=True, blank=True)
     construction_start_date = models.DateField(null=True, blank=True)
@@ -51,3 +55,6 @@ class JobTemplateItem(models.Model):
 class Room(models.Model):
     job = models.ForeignKey('jobs.Job', on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
