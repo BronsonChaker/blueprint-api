@@ -4,4 +4,5 @@ from .models import *
 admin.site.register(Job)
 admin.site.register(JobTemplate)
 admin.site.register(JobTemplateItem)
+admin.site.register(Room)
 
