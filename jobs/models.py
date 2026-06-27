@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 
 class Job(models.Model):
     class Status(models.TextChoices):
@@ -15,7 +16,8 @@ class Job(models.Model):
         COMPLETION = 'completion', 'Completion'
         MAINTENANCE = 'maintenance', 'Maintenance'
 
-    job_number = models.CharField(max_length=10, null=True)
+    job_number = models.CharField(max_length=10, null=True, blank=True)
+    job_reference = models.UUIDField(default=uuid.uuid4, editable=False)
     organisation = models.ForeignKey('organisations.Organisation', on_delete=models.CASCADE)
     template = models.ForeignKey('jobs.JobTemplate', on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=255)
