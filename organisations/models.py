@@ -1,6 +1,8 @@
+import uuid
 from django.db import models
 
 class Organisation(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     display_picture = models.ImageField(upload_to='organisations/', null=True, blank=True)
     email_address = models.EmailField(blank=True)
