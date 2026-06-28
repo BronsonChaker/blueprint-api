@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 
 class Job(models.Model):
@@ -15,7 +16,10 @@ class Job(models.Model):
         COMPLETION = 'completion', 'Completion'
         MAINTENANCE = 'maintenance', 'Maintenance'
 
-    job_number = models.CharField(max_length=10, null=True)
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    job_number = models.CharField(max_length=10, null=True, blank=True)
+    job_reference = models.UUIDField(default=uuid.uuid4, editable=False)
     organisation = models.ForeignKey('organisations.Organisation', on_delete=models.CASCADE)
     template = models.ForeignKey('jobs.JobTemplate', on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=255)

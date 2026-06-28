@@ -5,7 +5,7 @@ class Task(models.Model):
         NOT_COMPLETE = 'not complete', 'Not Complete'
         COMPLETED = 'completed', 'Completed'
 
-    job = models.ForeignKey('jobs.Job', on_delete=models.CASCADE)
+    job = models.ForeignKey('jobs.Job', on_delete=models.CASCADE, related_name='tasks')
     vendor = models.ForeignKey('vendors.Vendor', on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=255)
     booking_date = models.DateField(null=True, blank=True)
