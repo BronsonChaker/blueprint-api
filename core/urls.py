@@ -20,9 +20,11 @@ from users.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),
+    path('organisations/', include('organisations.urls')),
     path('users/', include('users.urls')),
     path('jobs/', include('jobs.urls')),
     path('tasks/', include('tasks.urls')),
     path('vendors/', include('vendors.urls')),
+    path('inspections/', include('inspections.urls')),
+    path('documents', include('documents.urls'))
 ]
