@@ -36,7 +36,7 @@ class InspectionTemplateItem(models.Model):
     
     
 class Defect(models.Model):
-    inspection = models.ForeignKey('inspections.Inspection', on_delete=models.CASCADE)
+    inspection = models.ForeignKey('inspections.Inspection', on_delete=models.CASCADE, related_name='defects')
     vendor = models.ForeignKey('vendors.Vendor', on_delete=models.SET_NULL, null=True, blank=True)
     job = models.ForeignKey('jobs.Job', on_delete=models.CASCADE)
     room = models.ForeignKey('jobs.Room', on_delete=models.CASCADE)

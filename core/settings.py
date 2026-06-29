@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     'inspections',
     'vendors',
     'documents',
-    'api.apps.ApiConfig'
 ]
 
 REST_FRAMEWORK = {

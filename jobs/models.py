@@ -21,6 +21,7 @@ class Job(models.Model):
     job_number = models.CharField(max_length=10, null=True, blank=True)
     job_reference = models.UUIDField(default=uuid.uuid4, editable=False)
     organisation = models.ForeignKey('organisations.Organisation', on_delete=models.CASCADE)
+    supervisor = models.ForeignKey('users.user', on_delete=models.SET_NULL, null=True)
     template = models.ForeignKey('jobs.JobTemplate', on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
