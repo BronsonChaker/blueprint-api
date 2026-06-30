@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 from users.views import *
 
+app_name ='core'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('organisations/', include('organisations.urls')),
@@ -26,5 +28,5 @@ urlpatterns = [
     path('tasks/', include('tasks.urls')),
     path('vendors/', include('vendors.urls')),
     path('inspections/', include('inspections.urls')),
-    path('documents', include('documents.urls'))
+    path('documents/', include('documents.urls'))
 ]
