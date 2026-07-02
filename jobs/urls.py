@@ -5,9 +5,7 @@ from . import views
 app_name = 'jobs'
 
 urlpatterns = [
-    path('', views.job_list),
-    path('<uuid:uuid>/', views.user_job_list),
-
+    path('', views.user_job_list),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
