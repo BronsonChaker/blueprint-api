@@ -10,5 +10,11 @@ class Organisation(models.Model):
     phone_number = models.CharField(max_length=20, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+# TODO: to be migrated into DB
+    # class Meta:
+    #     constraints = [
+    #         models.UniqueConstraint(fields=['user', 'organisation'], name='unique_user_org')
+    #     ]
+
     def __str__(self):
         return self.name
