@@ -1,7 +1,10 @@
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+<<<<<<< Updated upstream
 from rest_framework import status
+=======
+>>>>>>> Stashed changes
 from .serializers import TaskSerializer
 from .models import Task
 
