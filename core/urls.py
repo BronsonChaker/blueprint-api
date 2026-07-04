@@ -17,6 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from users.views import *
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 app_name ='core'
 
@@ -28,5 +32,7 @@ urlpatterns = [
     path('tasks/', include('tasks.urls')),
     path('vendors/', include('vendors.urls')),
     path('inspections/', include('inspections.urls')),
-    path('documents/', include('documents.urls'))
+    path('documents/', include('documents.urls')),
+    path('core/token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('core/token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
 ]

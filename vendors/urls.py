@@ -4,5 +4,6 @@ from . import views
 app_name = 'vendors'
 
 urlpatterns = [
-    path('', views.vendor_list)
+    path('', views.vendor_list),
+    path('create', views.create_vendor)
 ]
