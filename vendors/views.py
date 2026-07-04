@@ -32,6 +32,14 @@ def create_vendor(request):
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+
+@api_view(['POST'])
+def create_vendor(request):
+    serializer = VendorSerializer(data=request.data)
+    if serializer.is_valid:
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
 
     
