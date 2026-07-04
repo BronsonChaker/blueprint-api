@@ -6,20 +6,13 @@ from .models import Vendor
 from .serializers import VendorSerializer
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def vendor_list(request):
-<<<<<<< HEAD
-<<<<<<< Updated upstream
     if request.method == "GET":
         vendors = Vendor.objects.all()
         serializer = VendorSerializer(vendors, many=True)
         return Response(serializer.data)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-=======
-    vendors = Vendor.objects.filter(organisation__membership__user=request.user)
-    serializer = VendorSerializer(vendors, many=True)
-    return Response(serializer.data)
 
 @api_view(['POST'])
 def create_vendor(request):
@@ -28,38 +21,5 @@ def create_vendor(request):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-<<<<<<< Updated upstream
-        
-
-@api_view(['POST'])
-def create_vendor(request):
-    serializer = VendorSerializer(data=request.data)
-    if serializer.is_valid:
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-
-@api_view(['POST'])
-def create_vendor(request):
-    serializer = VendorSerializer(data=request.data)
-    if serializer.is_valid:
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-=======
->>>>>>> Stashed changes
-=======
-    vendors = Vendor.objects.filter(organisation__membership__user=request.user)
-    serializer = VendorSerializer(vendors, many=True)
-    return Response(serializer.data)
->>>>>>> b1302f33450b056714e1ec4bcc6b57b719c6b54a
-        
 
     
