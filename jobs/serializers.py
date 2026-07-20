@@ -1,9 +1,12 @@
 from rest_framework import serializers
 from .models import *
 from tasks.serializers import TaskSerializer
+from users.serializers import UserSerializer
 
 class JobSerializer(serializers.ModelSerializer):
     tasks = TaskSerializer(many=True, read_only=True)
+    first_name = serializers.CharField(source='user.first_name', read_only=True)
+    last_name = serializers.CharField(source='user.last_name', read_only=True)
     class Meta:
         model = Job
         fields = [
@@ -12,6 +15,8 @@ class JobSerializer(serializers.ModelSerializer):
             'job_reference',
             'organisation',
             'supervisor',
+            'first_name',
+            'last_name',
             'template',
             'name',
             'address',
