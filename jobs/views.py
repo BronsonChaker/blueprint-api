@@ -30,6 +30,13 @@ def create_job(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
+def view_job(request, pk):
+    job = Job.objects.filter(pk = pk)
+    serializer = JobSerializer(job, many=True)
+    return Response(serializer.data)
+    
+
+@api_view(['GET'])
 def filter_tasks_completed(request, pk):
     completed_tasks = Task.objects.filter(
         job__pk = pk,
