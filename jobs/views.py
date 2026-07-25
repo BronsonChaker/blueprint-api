@@ -34,6 +34,12 @@ def view_job(request, pk):
     job = Job.objects.filter(pk = pk)
     serializer = JobSerializer(job, many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def filter_job_status(request,status):
+     job = Job.objects.filter(status=status)
+     serializer = JobSerializer(job, many=True)
+     return Response(serializer.data)
     
 
 @api_view(['GET'])
