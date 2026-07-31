@@ -13,7 +13,6 @@ def job_list(request):
         jobs = Job.objects.all()
         serializer = JobSerializer(jobs, many=True)
         return Response(serializer.data)
-        
 
 @api_view(['GET'])
 def user_job_list(request):   
@@ -34,6 +33,15 @@ def view_job(request, pk):
     job = Job.objects.filter(pk = pk)
     serializer = JobSerializer(job, many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def view_tasks(request, pk):
+    tasks = Task.objects.filter(
+         job__pk = pk
+    )
+    serializer = TaskSerializer(tasks, many=True)
+    return Response(serializer.data)
+     
 
 @api_view(['GET'])
 def filter_job_status(request,status):
