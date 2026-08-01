@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # Third Party Packages
     'rest_framework',
     'corsheaders',
+    'drf_spectacular',
 
     # Blueprint apps
     'organisations',
@@ -64,6 +65,15 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Blueprint API',
+    'DESCRIPTION': 'Construction Management Software',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
 }
 
 MIDDLEWARE = [
