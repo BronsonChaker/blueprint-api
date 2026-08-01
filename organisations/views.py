@@ -4,6 +4,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import *
 from .models import Organisation
+from users.models import User, Membership
+from users.serializers import UserSerializer  
+from users.serializers import MembershipSerializer  
 from .serializers import OrganisationSerializer
 
 @api_view(['GET'])
@@ -20,4 +23,16 @@ def create_organisation(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET'])
+def get_organisation_supervisors(request):
+    membership = request.user.membership_set.first()
 
+    org = membership.organisation
+
+    supervisors = Membership.objects.filter(
+        organisation=org,
+        role=Membership.Role.SUPERVISOR
+    )
+
+    serializer = MembershipSerializer(supervisors, many=True)
+    return Response(serializer.data)

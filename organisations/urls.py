@@ -5,5 +5,6 @@ app_name = 'organisations'
 
 urlpatterns = [
     path('', views.user_organisation),
-    path('create', views.create_organisation)
+    path('create', views.create_organisation),
+    path('users', views.get_organisation_supervisors)
 ]
