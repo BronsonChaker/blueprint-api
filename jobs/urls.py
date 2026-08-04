@@ -6,6 +6,7 @@ app_name = 'jobs'
 
 urlpatterns = [
     path('', views.user_job_list),
+    path('/count', views.job_count),
     path('<uuid:pk>', views.view_job),
     path('<str:status>', views.filter_job_status),
     path('create', views.create_job),

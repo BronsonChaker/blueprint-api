@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -33,6 +34,11 @@ def view_job(request, pk):
     job = Job.objects.filter(pk = pk)
     serializer = JobSerializer(job, many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def job_count(request):
+     count = Job.objects.filter(organisation__membership__user=request.user).distinct().count()
+     return Response({'job_count' : count})
 
 @api_view(['GET'])
 def view_tasks(request, pk):
