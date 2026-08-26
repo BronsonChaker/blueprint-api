@@ -6,7 +6,7 @@ from django.db import IntegrityError
 
 User = get_user_model()
 class JobTestCase(TestCase):
-    def setUp(self):
+    def jobSetUp(self):
         self.user = User.objects.create(
             username="test",
             email="test@example.com",

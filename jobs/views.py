@@ -37,7 +37,7 @@ def view_job(request, pk):
 
 @api_view(['GET'])
 def job_count(request):
-     count = Job.objects.filter(organisation__membership__user=request.user).distinct().count()
+     count = Job.objects.filter(organisation__membership__user=request.user).count()
      return Response({'job_count' : count})
 
 @api_view(['GET'])
