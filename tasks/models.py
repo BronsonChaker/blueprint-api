@@ -11,6 +11,8 @@ class Task(models.Model):
     booking_date = models.DateField(null=True, blank=True)
     completion_date = models.DateField(null=True, blank=True)
     status = models.CharField(max_length=20, choices=Status.choices, null=False)
+    is_critical = models.BooleanField(default=False,blank=True)
+    is_milestone = models.BooleanField(default=False, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

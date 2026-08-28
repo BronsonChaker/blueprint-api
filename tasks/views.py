@@ -18,3 +18,8 @@ def create_task(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET'])
+def get_critical_tasks(request):
+    tasks = Task.objects.filter()
+    # Unfinished
+
