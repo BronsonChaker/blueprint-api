@@ -20,6 +20,7 @@ def create_task(request):
 
 @api_view(['GET'])
 def get_critical_tasks(request):
-    tasks = Task.objects.filter()
-    # Unfinished
+    tasks = Task.objects.filter(job__organisation__membership__user=request.user, is_critical=True)
+    serializer = TaskSerializer(tasks, many=True)
+    return Response(serializer.data)
 
