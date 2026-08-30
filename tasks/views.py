@@ -20,7 +20,13 @@ def create_task(request):
 
 @api_view(['GET'])
 def get_critical_tasks(request):
-    tasks = Task.objects.filter(job__organisation__membership__user=request.user, is_critical=True)
+    tasks = Task.objects.filter(job__organisation__membership__user=request.user, is_critical=True).order_by('booking_date')
+    serializer = TaskSerializer(tasks, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def get_milestone_tasks(request):
+    tasks = Task.objects.filter(job__organisation__membership__user=request.user, is_milestone=True).order_by('booking_date')
     serializer = TaskSerializer(tasks, many=True)
     return Response(serializer.data)
 
