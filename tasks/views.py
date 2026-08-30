@@ -6,7 +6,7 @@ from .models import Task
 
 @api_view(['GET'])
 def task_list(request):
-    tasks = Task.objects.filter(job__organisation__membership__user=request.user)
+    tasks = Task.objects.filter(job__organisation__membership__user=request.user).order_by('booking_date')
     serializer = TaskSerializer(tasks, many=True)
     return Response(serializer.data)
 
