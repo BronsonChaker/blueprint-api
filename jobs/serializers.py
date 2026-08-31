@@ -15,6 +15,7 @@ class JobSerializer(serializers.ModelSerializer):
             'job_reference',
             'organisation',
             'supervisor',
+            'template'
             'first_name',
             'last_name',
             'template',
@@ -22,11 +23,14 @@ class JobSerializer(serializers.ModelSerializer):
             'address',
             'status',
             'stage',
-            'client_name',
+            'client_first_name',
+            'client_last_name',
             'client_email',
             'client_phone',
+            'client_billing',
             'contract_start_date',
             'contract_end_date',
+            'contract_price',
             'construction_start_date',
             'construction_end_date',
             'tasks'
