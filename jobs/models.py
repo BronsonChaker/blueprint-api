@@ -31,7 +31,7 @@ class Job(models.Model):
     client_last_name = models.CharField(max_length=255, blank=True)
     client_email = models.EmailField(blank=True)
     client_phone = models.CharField(max_length=20, blank=True)
-    client_billing = models.CharField(max_length=20, blank=True)
+    client_billing = models.CharField(max_length=255, blank=True)
     contract_start_date = models.DateField(null=True, blank=True)
     contract_end_date = models.DateField(null=True, blank=True)
     contract_price = models.DecimalField(max_digits=10, decimal_places=2, null=True)
