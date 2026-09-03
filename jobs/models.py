@@ -25,8 +25,8 @@ class Job(models.Model):
     template = models.ForeignKey('jobs.JobTemplate', on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
-    status = models.CharField(max_length=20, choices=Status.choices, null=False, default=Status.ACTIVE)
-    stage = models.CharField(max_length=20, choices=Stage.choices, null=False, default=Stage.SALES)
+    status = models.CharField(max_length=20, choices=Status.choices, blank=True, null=False, default=Status.ACTIVE)
+    stage = models.CharField(max_length=20, choices=Stage.choices, blank=True, null=False, default=Stage.SALES)
     client_first_name = models.CharField(max_length=255, blank=True)
     client_last_name = models.CharField(max_length=255, blank=True)
     client_email = models.EmailField(blank=True)
@@ -37,7 +37,9 @@ class Job(models.Model):
     contract_price = models.DecimalField(max_digits=10, decimal_places=2, null=True)
     construction_start_date = models.DateField(null=True, blank=True)
     construction_end_date = models.DateField(null=True, blank=True)
+    access_notes = models.TextField(max_length=500, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    
 
     def __str__(self):
         return self.name
